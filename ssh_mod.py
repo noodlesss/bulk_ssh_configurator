@@ -9,7 +9,8 @@ class SSH_Connect(object):
         self.con = paramiko.SSHClient()
         self.con.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         self.con.connect(host, username = self.username, password = self.password)
+        self.c = self.con.invoke_shell()
     
     def send_command(self,line):
-        stdin, stdout, stderr = self.con.exec_command(line+'\n')
-        return stdin, stdout, stderr
+        self.c.send(line)
+        return self.c.recv(9999)
