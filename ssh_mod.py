@@ -14,3 +14,6 @@ class SSH_Connect(object):
     def send_command(self,line):
         self.c.send(line)
         return self.c.recv(9999)
+
+    def close(self):
+        selc.c.close()
