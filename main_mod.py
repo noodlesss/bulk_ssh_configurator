@@ -18,6 +18,7 @@ def worker(host,username,password,config_file, print_output):
             for line in config:
                 stdout = ssh_connect.send_command(line)
                 fl.writelines(stdout)
+        ssh_connect.close()
     except Exception, e:
         print 'ERROR: Could not connect to %s' %host
     
