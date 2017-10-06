@@ -16,4 +16,4 @@ class SSH_Connect(object):
         return self.c.recv(9999)
 
     def close(self):
-        selc.c.close()
+        self.c.close()
